@@ -21,7 +21,7 @@
 
   <issue>https://github.com/EddyVerbruggen/Custom-URL-scheme/issues</issue>
 
-  <preference name="URL_SCHEME" />
+  <preference name="URL_SCHEME"  default=" " />
 
   <engines>
     <engine name="cordova" version=">=3.0.0"/>
@@ -47,10 +47,13 @@
 
   <!-- android -->
   <platform name="android">
-    <preference name="ANDROID_SCHEME" default=" " />
-    <preference name="ANDROID_HOST" default=" " />
-    <preference name="ANDROID_PATHPREFIX" default="/" />
+    <preference name="ANDROID_SCHEME1" default=" " />
+    <preference name="ANDROID_HOST1" default=" " />
+    <!-- <preference name="ANDROID_PATHPREFIX" default="/" /> -->
 
+    <preference name="ANDROID_SCHEME2" default=" " />
+    <preference name="ANDROID_HOST2" default=" " />          
+          
     <js-module src="www/android/LaunchMyApp.js" name="LaunchMyApp">
       <clobbers target="window.plugins.launchmyapp" />
     </js-module>
@@ -64,12 +67,12 @@
     <source-file src="src/android/nl/xservices/plugins/LaunchMyApp.java" target-dir="src/nl/xservices/plugins"/>
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
-      <intent-filter>
+      <!-- <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
         <data android:scheme="$URL_SCHEME"/>
-      </intent-filter>
+      </intent-filter> 
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
@@ -77,7 +80,24 @@
         <data android:scheme="$ANDROID_SCHEME"
               android:host="$ANDROID_HOST"
               android:pathPrefix="$ANDROID_PATHPREFIX" />
-      </intent-filter>
+      </intent-filter> -->
+   
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="$ANDROID_SCHEME1"
+              android:host="$ANDROID_HOST1" />
+      </intent-filter> 
+            
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="$ANDROID_SCHEME2"
+              android:host="$ANDROID_HOST2" />
+      </intent-filter>           
+           
     </config-file>
   </platform>
 
